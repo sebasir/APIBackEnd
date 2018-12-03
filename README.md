@@ -1,5 +1,5 @@
 # APIBackEnd
-###Creación de los contenedores
+### Creación de los contenedores
 Descargar la imagen oficial de mongoDB:
 
     docker pull mongo:latest
@@ -42,7 +42,7 @@ Crear un contenedor para la base de datos:
 * Conecta los servidores dentro de la red apiServers: `--network apiServers`
 
 
-###Crear un contenedor para el servidor de aplicaciones Wildfly:
+### Crear un contenedor para el servidor de aplicaciones Wildfly:
 
     docker run --name apiWildfly -d -p 80:8080 -v /var/wildfly/standalone:/opt/jboss/wildfly/standalone/deployments --network apiServers jboss/wildfly:14.0.1.Final
 * Se llama apiWildfly: `--name`
@@ -52,7 +52,7 @@ Crear un contenedor para la base de datos:
 * Replica la imagen de mongo descargada previamente: `jboss/wildfly:14.0.0.Final`
 * Conecta los servidores dentro de la red apiServers: `--network apiServers`
 
-###Verificar el estado de las instancias:
+### Verificar el estado de las instancias:
 
     docker ps -a
 
@@ -61,7 +61,7 @@ Detener o iniciar el contenedor
     docker stop apiMongo
     docker start apiMongo
 
-###Ejecución de comandos dentro del contenedor
+### Ejecución de comandos dentro del contenedor
 Para ingresar a la línea de comandos del contenedor:
 
     docker exec -ti apiMongo bash
@@ -84,7 +84,7 @@ Ejecutar el script `./main.sh`
       src/main/resources/scripts
 * Esta ruta debe enlazarse con la ruta que se señale en el parametro `-v`
 
-###Asegurar la base de datos con contraseña
+### Asegurar la base de datos con contraseña
 Eliminar el contenedor, y volverlo a crear, añadiendo el parámetro `--auth`:
 
     docker stop apiMongo
